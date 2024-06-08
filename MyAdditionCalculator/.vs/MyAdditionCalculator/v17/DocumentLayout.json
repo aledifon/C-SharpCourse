@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\PROJECTS\\C-SharpCourse\\MyAdditionCalculator\\",
+  "WorkspaceRootPath": "C:\\Users\\aledi\\C-SharpCourse\\MyAdditionCalculator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D96FE1D9-3001-44E9-B0C7-28D6A87153D0}|MyAdditionCalculator\\MyAdditionCalculator.csproj|c:\\projects\\c-sharpcourse\\myadditioncalculator\\myadditioncalculator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D96FE1D9-3001-44E9-B0C7-28D6A87153D0}|MyAdditionCalculator\\MyAdditionCalculator.csproj|c:\\users\\aledi\\c-sharpcourse\\myadditioncalculator\\myadditioncalculator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D96FE1D9-3001-44E9-B0C7-28D6A87153D0}|MyAdditionCalculator\\MyAdditionCalculator.csproj|solutionrelative:myadditioncalculator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,9 +20,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\PROJECTS\\C-SharpCourse\\MyAdditionCalculator\\MyAdditionCalculator\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\aledi\\C-SharpCourse\\MyAdditionCalculator\\MyAdditionCalculator\\Program.cs",
               "RelativeDocumentMoniker": "MyAdditionCalculator\\Program.cs",
-              "ToolTip": "C:\\PROJECTS\\C-SharpCourse\\MyAdditionCalculator\\MyAdditionCalculator\\Program.cs",
+              "ToolTip": "C:\\Users\\aledi\\C-SharpCourse\\MyAdditionCalculator\\MyAdditionCalculator\\Program.cs",
               "RelativeToolTip": "MyAdditionCalculator\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

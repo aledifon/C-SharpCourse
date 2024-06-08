@@ -8,28 +8,26 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\alejandro.diazfontal\\.nuget\\packages\\": {}
+    "C:\\Users\\aledi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PROJECTS\\C-SharpCourse\\HelloWorld\\HelloWorld\\HelloWorld.csproj",
+      "projectUniqueName": "C:\\Users\\aledi\\C-SharpCourse\\HelloWorld\\HelloWorld\\HelloWorld.csproj",
       "projectName": "HelloWorld",
-      "projectPath": "C:\\PROJECTS\\C-SharpCourse\\HelloWorld\\HelloWorld\\HelloWorld.csproj",
-      "packagesPath": "C:\\Users\\alejandro.diazfontal\\.nuget\\packages\\",
-      "outputPath": "C:\\PROJECTS\\C-SharpCourse\\HelloWorld\\HelloWorld\\obj\\",
+      "projectPath": "C:\\Users\\aledi\\C-SharpCourse\\HelloWorld\\HelloWorld\\HelloWorld.csproj",
+      "packagesPath": "C:\\Users\\aledi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aledi\\C-SharpCourse\\HelloWorld\\HelloWorld\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\alejandro.diazfontal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aledi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files(x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\TwinCAT\\Functions\\TE2000-HMI-Engineering\\Infrastructure\\Packages": {},
-        "C:\\TwinCAT\\Functions\\TE2000-HMI-Engineering\\References": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
