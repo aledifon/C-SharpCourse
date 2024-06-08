@@ -15,7 +15,7 @@ Console.WriteLine("Give me the 2nd number");
 bool userInput2Parsed = int.TryParse(Console.ReadLine(), out int userinput2);
 
 if (userInput1Parsed & userInput2Parsed)
-    // string concatenation   
+    // string concatenation  
     Console.WriteLine(userinput1 + " + " + userinput2 + " = " + (userinput1 + userinput2));
 
     // string interpolation
