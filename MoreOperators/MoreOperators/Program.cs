@@ -27,9 +27,17 @@
 
             int num = 0;
 
-            Console.WriteLine($"Num is {num}");
+            int num1 = 10;
+            int num2 = 3;
+
+            // Modulo operator
+            int result = num1%num2;
+
+            Console.WriteLine("{result");
+
+            //Console.WriteLine($"Num is {num}");
             // Incrementing of int
-            num++;
+            //num++;
             //Console.WriteLine($"Num is {num}");         // String interpolation
             ////pre-incrementing
             //Console.WriteLine("Num is {0}", ++num);     // String formatting
