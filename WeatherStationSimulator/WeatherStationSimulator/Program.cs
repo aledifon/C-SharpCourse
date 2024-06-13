@@ -6,42 +6,63 @@
 
         static double GetAverageTemp(int[] temp)
         {
-            ////Solution A
-            //int sum = 0;
-            //foreach (var item in temp)
-            //    sum += item;
+            // Solution A
+            double sum = 0;
+            foreach (var item in temp)
+                sum += item;
+            return sum / temp.Length;
+
+            // Solution B
+            //for (int i = 0; i < temp.Length; i++)
+            //{
+            //    sum += temp[i];
+            //}
             //return sum / temp.Length;
 
-            // Solution B (LINQ)
-            return temp.Average();
+            // Solution C (LINQ)
+            //return temp.Average();
         }
 
         static int GetMaxTemp(int[] temp)
         {
             // Solution A
-            //int max = temp[0];
-            //foreach (var item in temp)
+            int max = temp[0];
+            foreach (var item in temp)
+            {
+                if (item > max) max = item;
+            }
+            return max;
+
+            // Solution B
+            //for (int i = 0; i < temp.Length; i++)
             //{
-            //    if (item > max) max = item;
+            //    if (temp[i] > max)  max = temp[i];
             //}
             //return max;
 
-            // Solution B (LINQ)
-            return temp.Max();
+            // Solution C (LINQ)
+            //return temp.Max();
         }
 
         static int GetMinTemp(int[] temp)
         {
             // Solution A
-            //int min = temp[0];
-            //foreach (var item in temp)
+            int min = temp[0];
+            foreach (var item in temp)
+            {
+                if (item < min) min = item;
+            }
+            return min;
+
+            // Solution B
+            //for (int i = 0; i < temp.Length; i++)
             //{
-            //    if (item < min) min = item;
+            //    if (temp[i] < min)  min = temp[i];
             //}
             //return min;
 
-            // Solution B (LINQ)
-            return temp.Min();
+            // Solution C (LINQ)
+            //return temp.Min();
         }
 
         static string GetMostCommonCondition(string[] wCond)
@@ -86,12 +107,15 @@
             }
 
             //Show the higest temp
-            Console.WriteLine("\nThe hightest temperature of these " + days + " days has been " + GetMaxTemp(temperature) + "°");
+            //Console.WriteLine("\nThe hightest temperature of these " + days + " days has been " + GetMaxTemp(temperature) + "°");
+            Console.WriteLine("\nThe hightest temperature of these " + days + " days has been " + temperature.Max() + "°");
             //Show the lowest temp
-            Console.WriteLine("\nThe lowest temperature of these " + days + " days has been " + GetMinTemp(temperature) + "°");
+            //Console.WriteLine("\nThe lowest temperature of these " + days + " days has been " + GetMinTemp(temperature) + "°");
+            Console.WriteLine("\nThe lowest temperature of these " + days + " days has been " + temperature.Min() + "°");
             //Show the average temp
-            Console.WriteLine("\nThe average temperature of these " + days + " days has been " + GetAverageTemp(temperature) + "°");
-            //Show the most common weather condition
+            //Console.WriteLine("\nThe average temperature of these " + days + " days has been " + GetAverageTemp(temperature) + "°");
+            Console.WriteLine("\nThe average temperature of these " + days + " days has been " + temperature.Average() + "°");
+            //Show the most common weather condition            
             Console.WriteLine("\nThe most part ot the time of these " + days + " days the weather has been " + GetMostCommonCondition(weatherConditions));
 
             Console.ReadKey();
