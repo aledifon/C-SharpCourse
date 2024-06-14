@@ -21,7 +21,22 @@ namespace ClassesApp
         private bool _isLuxury;
 
         // Property        
-        public string Model { get => _model; set => _model = value; }        
+        public string Model { get => _model; set => _model = value; }   // Getter-Setter with Lambda expression  
+
+        /*
+        public string Model                                             // Getter-Setter without Lambda expression
+        {
+            get
+            {
+                return _model;
+            }
+            set
+            {
+                _model = value;
+            }
+        }
+        */
+
         public string Brand { 
             
             get
