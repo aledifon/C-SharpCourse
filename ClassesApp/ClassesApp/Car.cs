@@ -18,16 +18,43 @@ namespace ClassesApp
 
         private string _brand = "";
 
+        private bool _isLuxury;
+
         // Property        
         public string Model { get => _model; set => _model = value; }        
-        public string Brand { get => _brand; set => _brand = value; }
+        public string Brand { 
+            
+            get
+            {
+                if (_isLuxury)
+                    return _brand + " - Luxury Edition";                
+                else
+                    return _brand;
+            } 
+
+            set 
+            {   if(string.IsNullOrEmpty(value))
+                {
+                    Console.WriteLine("You entered Nothing!");
+                    _brand = "DEFAULTVALUE";
+                }
+                else
+                {
+                    _brand = value;
+                }                        
+            }
+        }
+
+        public bool IsLuxury { get => _isLuxury; set => _isLuxury = value; }
 
         // Custom Constructor
-        public Car(string brand, string model)
+        public Car(string brand, string model, bool isLuxury)
         {
             Model = model;
             Brand = brand;
-            Console.WriteLine("A "+ Brand + " car of the model " + Model + " has been created");
+            Console.WriteLine("A "+ Brand + " car of the model " 
+                            + Model + " has been created");
+            IsLuxury = isLuxury;
         }        
     }
 }
