@@ -11,7 +11,10 @@ namespace ClassesApp
         // Static field to hold the next ID available
         private static int nextId = 0;
 
-        private readonly int _id;        
+        // Read-only instance field initialized from the constructor
+        private readonly int _id;
+
+        private string _password;
 
         public string Name { get; set; }
         public string Address { get; set; }
