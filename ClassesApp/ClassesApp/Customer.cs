@@ -20,19 +20,15 @@ namespace ClassesApp
             ContactNumber = "No contactNumber";
         }
 
-        // Custom constructor
-        public Customer(string name, string address, string contactNumber)
+        // Default/optional parameter addresss and contactNumber
+        public Customer(string name, string address = "NA" , string contactNumber = "NA")
         {
             Name = name;
             Address = address;
             ContactNumber = contactNumber;
         }
 
-        public Customer(string name)
-        {
-            Name=name;
-        }
-
+        // Default parameter contactNumber
         public void SetDetails(string name, string address, string contactNumber = "NA")
         {
             Name = name;
