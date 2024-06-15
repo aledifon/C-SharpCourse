@@ -14,14 +14,17 @@ namespace ClassesApp
     {
         // member variable
         // private hides the variable from other classes
-        private string _model = "";
+        // Backing Field of the Model property
+        //private string _model = "";
 
         private string _brand = "";
 
-        private bool _isLuxury;
+        //private bool _isLuxury;
 
         // Property        
-        public string Model { get => _model; set => _model = value; }   // Getter-Setter with Lambda expression  
+        //public string Model { get => _model; set => _model = value; }   // Getter-Setter with Lambda expression  
+
+        public string Model { get; set; }
 
         /*
         public string Model                                             // Getter-Setter without Lambda expression
@@ -41,7 +44,7 @@ namespace ClassesApp
             
             get
             {
-                if (_isLuxury)
+                if (IsLuxury)
                     return _brand + " - Luxury Edition";                
                 else
                     return _brand;
@@ -60,10 +63,12 @@ namespace ClassesApp
             }
         }
 
-        public bool IsLuxury { get => _isLuxury; set => _isLuxury = value; }
+        //public bool IsLuxury { get => _isLuxury; set => _isLuxury = value; }
+
+        public bool IsLuxury { get; set; }
 
         // Custom Constructor
-        public Car(string brand, string model, bool isLuxury)
+        public Car(string model, string brand, bool isLuxury)
         {
             Model = model;
             Brand = brand;
@@ -71,5 +76,10 @@ namespace ClassesApp
                             + Model + " has been created");
             IsLuxury = isLuxury;
         }        
+
+        public void Drive()
+        {
+            Console.WriteLine($"I'm a {Model} and I'm driving");
+        }
     }
 }
