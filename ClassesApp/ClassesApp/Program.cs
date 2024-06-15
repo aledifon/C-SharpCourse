@@ -1,26 +1,21 @@
 ﻿namespace ClassesApp
 {
+    // Access Modifier internal
     internal class Program
     {
         static void Main(string[] args)
         {
-            Customer myCustomer = new Customer();
+            Car car = new Car();
+            Car car2 = new Car();
+            Car car3 = new Car("A3","Audi",false);
+            car3.Drive();
 
-            // The DoSomeCustomerStuffs method is static and cannot be called on Objects
-            //myCustomer.DoSomeCustomerStuffs();
-
-            MyMethod();
+            // accesing the public static variable NumberOfCars of the Car Class
+            Console.WriteLine("Number of cars produced: " + Car.NumberOfCars);            
             
             Console.ReadKey();
         }
 
-        // In C#, the static keyword is used to declare
-        // members of a class that belong to the class itself
-        // rather than to any specific instance of the class
 
-        static void MyMethod()
-        {
-            Console.WriteLine("My Method");
-        }
     }
 }
