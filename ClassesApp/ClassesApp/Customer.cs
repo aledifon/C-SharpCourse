@@ -11,12 +11,13 @@ namespace ClassesApp
         // Static field to hold the next ID available
         private static int nextId = 0;
 
-        private readonly int _id;
+        private readonly int _id;        
 
         public string Name { get; set; }
         public string Address { get; set; }
         public string ContactNumber { get; set; }
 
+        // Read-Only Property
         public int Id {get => _id;}
 
         // Default Constructor
