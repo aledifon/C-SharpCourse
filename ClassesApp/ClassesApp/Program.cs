@@ -25,7 +25,10 @@
 
             customer.GetDetails();
             customer2.GetDetails();
+            customer3.Password = "12431241234fasdf";
             customer3.GetDetails();
+
+                       
 
             Console.ReadKey();
         }
