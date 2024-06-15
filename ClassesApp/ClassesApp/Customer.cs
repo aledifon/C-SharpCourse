@@ -17,7 +17,7 @@ namespace ClassesApp
         {
             Name = "Default Name";
             Address = "No address";
-            ContactNumber = "No contactNumber";
+            ContactNumber = "No contactNumber";            
         }
 
         // Default/optional parameter addresss and contactNumber
@@ -34,6 +34,11 @@ namespace ClassesApp
             Name = name;
             Address = address;
             ContactNumber = contactNumber;
+        }
+
+        public static void DoSomeCustomerStuff()
+        {
+            Console.WriteLine("I am doing some customer stuff");
         }
 
     }

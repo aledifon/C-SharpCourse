@@ -4,17 +4,23 @@
     {
         static void Main(string[] args)
         {
+            Customer myCustomer = new Customer();
 
-            Console.WriteLine(AddNum(15, 25));
-            // Named parameter
-            Console.WriteLine(AddNum(firstNum: 23, secondNum: 25));
+            // The DoSomeCustomerStuffs method is static and cannot be called on Objects
+            //myCustomer.DoSomeCustomerStuffs();
 
+            MyMethod();
+            
             Console.ReadKey();
         }
 
-        static int AddNum(int firstNum, int secondNum)
+        // In C#, the static keyword is used to declare
+        // members of a class that belong to the class itself
+        // rather than to any specific instance of the class
+
+        static void MyMethod()
         {
-            return firstNum + secondNum;
+            Console.WriteLine("My Method");
         }
     }
 }

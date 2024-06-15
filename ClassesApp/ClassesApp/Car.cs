@@ -12,6 +12,8 @@ namespace ClassesApp
     //An assembly is mainly a DLL or a .EXE.
     internal class Car
     {
+        public static int NumberOfCars = 0;
+
         // member variable
         // private hides the variable from other classes
         // Backing Field of the Model property
@@ -70,12 +72,19 @@ namespace ClassesApp
         // Custom Constructor
         public Car(string model, string brand, bool isLuxury)
         {
+            NumberOfCars++;
+
             Model = model;
             Brand = brand;
             Console.WriteLine("A "+ Brand + " car of the model " 
                             + Model + " has been created");
             IsLuxury = isLuxury;
         }        
+
+        public Car()
+        {
+            NumberOfCars++;
+        }
 
         public void Drive()
         {
