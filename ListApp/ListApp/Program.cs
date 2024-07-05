@@ -76,11 +76,6 @@ namespace ListApp
             
             Console.ReadKey();
 
-            static bool IsGreaterThanTen(int x)
-            {
-                return x > 10;
-            }
-
             // A lambda expression consists of 2 Parts
             // 1. Parameters
             // 2. Expresssion or Statement Blok
