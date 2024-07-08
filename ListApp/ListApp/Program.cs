@@ -1,4 +1,5 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Threading.Channels;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ListApp
 {
@@ -23,12 +24,20 @@ namespace ListApp
 
             products.Add(new Product { Name = "Berries", Price = 2.99});
 
-            Console.WriteLine("Available Products: ");
+            List<Product> cheapProducts =  products.Where(p => p.Price < 1.0).ToList();
 
+            Console.WriteLine("Available Products: ");
+            
             foreach (Product product in products)              
-                Console.WriteLine($"Product name: {product.Name} for {product.Price}");            
+                Console.WriteLine($"Product name: {product.Name} for {product.Price}");
 
             Console.WriteLine();
+
+            Console.WriteLine("Available producst for lesss than 1$: ");
+
+            foreach (Product product in cheapProducts)
+                Console.WriteLine($"Product name: {product.Name} for {product.Price}");
+            
             Console.WriteLine();
 
 
