@@ -2,10 +2,36 @@
 
 namespace ListApp
 {
+    public class Product
+    {
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+    }
+
     internal class Program
     {
         static void Main(string[] args)
         {
+            List<Product> products = new List<Product>()
+            {
+                new Product { Name = "Apple", Price = 0.80},
+                new Product { Name = "Banana", Price = 0.30},
+                new Product { Name = "Cherry", Price = 3.80}
+
+            };
+
+            products.Add(new Product { Name = "Berries", Price = 2.99});
+
+            Console.WriteLine("Available Products: ");
+
+            foreach (Product product in products)              
+                Console.WriteLine($"Product name: {product.Name} for {product.Price}");            
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+
             //LIST INITIALIZING & LIST ADDING/REMOVING ITEMS EXAMPLES
 
             //// Declaring List (without initializing)
@@ -48,6 +74,13 @@ namespace ListApp
             Console.WriteLine("Unsorted List");
             foreach (int number in numbers)
                 Console.WriteLine(number);
+
+            bool hasLargeNumber = numbers.Any(x => x > 30);
+            
+            if (hasLargeNumber)
+                Console.WriteLine("There are large numbers in the numbers list");
+            else
+                Console.WriteLine("No large numbers in the list");
 
             /*
              In C#, a delegate is like a pointer or a reference to a method.
