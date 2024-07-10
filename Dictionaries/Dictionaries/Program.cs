@@ -1,4 +1,8 @@
-﻿namespace Dictionaries
+﻿using System.Net.NetworkInformation;
+using System.Numerics;
+using System;
+
+namespace Dictionaries
 {
     class Employee
     {
@@ -17,22 +21,43 @@
     {
         static void Main(string[] args)
         {
-            ////////////////////////////////////
-            // Dictionary<int, Employee> VERSION//
-            ////////////////////////////////////
-            Dictionary<int, Employee> employees = new Dictionary<int, Employee>();
+            ////////////////////
+            // Code Challenge //
+            ////////////////////
 
-            employees.Add(1,new Employee("John Does", 35, 100000));
-            employees.Add(2, new Employee("John Doesnt", 25, 200000));
-            employees.Add(3, new Employee("John Wasnt", 45, 80000));
-            employees.Add(4, new Employee("John Will", 15, 50000));
-            
-            foreach(var item in employees)
-            {
-                Console.WriteLine($"ID: {item.Key} named {item.Value.Name} " +
-                                $"of {item.Value.Age} years old " +
-                                $"earns {item.Value.Salary} $");
-            }
+            //Using a Complex Object as the Value of a Dictionary
+            //#########################################
+            //Please, avoid changing the given source code for the exercise!So only add code, don't modify unless it is instructed to do so!
+            //#########################################
+            //Create a simple C# program that declares a dictionary with string keys and values of type List<int>, initializes it with one key-value pair, and prints the values of the list for the given key to the console.
+
+            //Alert!
+            //The result of execution for the default string should be:
+            //"1 2 3"
+
+            Dictionary<string, List<int>> dict = new Dictionary<string, List<int>>();
+
+            dict.Add("Primer", new List<int> {1, 2, 3});
+
+            foreach (var item in dict["Primer"])            
+                Console.Write($"{item} ");
+                        
+            //////////////////////////////////////
+            //// Dictionary<int, Employee> VERSION//
+            //////////////////////////////////////
+            //Dictionary<int, Employee> employees = new Dictionary<int, Employee>();
+
+            //employees.Add(1,new Employee("John Does", 35, 100000));
+            //employees.Add(2, new Employee("John Doesnt", 25, 200000));
+            //employees.Add(3, new Employee("John Wasnt", 45, 80000));
+            //employees.Add(4, new Employee("John Will", 15, 50000));
+
+            //foreach(var item in employees)
+            //{
+            //    Console.WriteLine($"ID: {item.Key} named {item.Value.Name} " +
+            //                    $"of {item.Value.Age} years old " +
+            //                    $"earns {item.Value.Salary} $");
+            //}
 
             Console.ReadKey();
 
