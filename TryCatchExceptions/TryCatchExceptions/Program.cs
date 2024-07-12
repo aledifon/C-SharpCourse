@@ -7,6 +7,18 @@ namespace TryCatchExceptions
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("App running before the try block");
+            try
+            {
+                LevelOne();
+            }            
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in Main: " + ex.Message);
+            }
+            Console.WriteLine("App is still running!");
+            Console.ReadKey();
+
             ///////////////////
             ///CODE Challenge//
             ///////////////////
@@ -19,49 +31,48 @@ namespace TryCatchExceptions
             //    Console.Write("Finally executed.\n");
             //}
 
-            int result = 0;
+            //int result = 0;
 
-            Debug.WriteLine("Main method is running");
+            //Debug.WriteLine("Main method is running");
 
-            try
-            {
-                Console.WriteLine("Please enter a number");
-                int num2 = int.Parse(Console.ReadLine());
-                int num1 = 2;
-
-                result = num1 / num2;
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine("DON'T DIVIDE BY ZERO!! " + ex.Message);
-                result = 10;
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("DON'T USE TEXT, ONLY NUMBERS PLEASE!! " + ex.Message);
-            }
-            catch (OverflowException ex)
-            {
-                Console.WriteLine("YOU USED A NUMBER TOO HIGH! " + ex.Message);
-            }
-            //catch (Exception ex)
+            //try
             //{
-            //    Console.WriteLine("Error: " + ex.ToString());
-            //    // This next line is only executed during "Debugging"
-            //    Debug.WriteLine(ex.ToString());
+            //    Console.WriteLine("Please enter a number");
+            //    int num2 = int.Parse(Console.ReadLine());
+            //    int num1 = 2;
+
+            //    result = num1 / num2;
             //}
-            finally
-            {
-                // Code to cleanup or finalize
-                // ideal for cleaning up resources,
-                // like closing file streams or database connections.
+            //catch (DivideByZeroException ex)
+            //{
+            //    Console.WriteLine("DON'T DIVIDE BY ZERO!! " + ex.Message);
+            //    result = 10;
+            //}
+            //catch (FormatException ex)
+            //{
+            //    Console.WriteLine("DON'T USE TEXT, ONLY NUMBERS PLEASE!! " + ex.Message);
+            //}
+            //catch (OverflowException ex)
+            //{
+            //    Console.WriteLine("YOU USED A NUMBER TOO HIGH! " + ex.Message);
+            //}
+            ////catch (Exception ex)
+            ////{
+            ////    Console.WriteLine("Error: " + ex.ToString());
+            ////    // This next line is only executed during "Debugging"
+            ////    Debug.WriteLine(ex.ToString());
+            ////}
+            //finally
+            //{
+            //    // Code to cleanup or finalize
+            //    // ideal for cleaning up resources,
+            //    // like closing file streams or database connections.
 
-                Console.WriteLine("This always executes");
-            }
+            //    Console.WriteLine("This always executes");
+            //}
 
-            Console.WriteLine("Result: " + result);
-            Console.ReadKey();
-
+            //Console.WriteLine("Result: " + result);
+            //Console.ReadKey();
 
 
             //Console.WriteLine("Please enter your age");
@@ -88,6 +99,16 @@ namespace TryCatchExceptions
                 throw new Exception("Your age must be between 0 and 120.");
             }
             return age;
+        }
+        static void LevelOne()
+        {
+            LevelTwo();
+        }
+        static void LevelTwo()
+        {
+            Console.WriteLine("Level two before throw!");
+            throw new Exception("Something went wrong!");
+            Console.WriteLine("Level two after throw!");
         }
     }
 }
