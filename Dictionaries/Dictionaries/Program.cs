@@ -17,31 +17,135 @@ namespace Dictionaries
             Salary = salary;
         }
     }
+    class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Grade { get; set; }
+
+        public Student(int id, string name, int grade)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Grade = grade;
+        }
+    }
+
     internal class Program
     {
+        //public void PrintStudents()
+        //static void PrintStudents() 
+        //{            
+        //    // Students objects instances
+        //    Student stud1 = new Student(1, "John", 85);
+        //    Student stud2 = new Student(2, "Alice", 90);
+        //    Student stud3 = new Student(3, "Bob", 78);
+
+        //    Dictionary<string, Student> students = new Dictionary<string, Student>
+        //    {
+        //        [stud1.Name] = stud1,
+        //        [stud2.Name] = stud2,
+        //        [stud3.Name] = stud3
+        //    };
+
+        //    // TODO
+        //    foreach (var item in students)
+        //        Console.WriteLine($"Name: {item.Key}, Id: {item.Value.Id}, Grade: {item.Value.Grade}");                        
+        //}
+        //public void PrintStudents(Dictionary<string, Student> students)
+        static void PrintStudents(Dictionary<string, Student> students)
+        {            
+            // TODO
+            foreach (var item in students)
+                Console.WriteLine($"Name: {item.Key}, Id: {item.Value.Id}, Grade: {item.Value.Grade}");            
+        }
+
         static void Main(string[] args)
         {
-            ////////////////////
-            // Code Challenge //
-            ////////////////////
+            ////////////////////////////
+            // Code Challenge Advanced//
+            ////////////////////////////
 
-            //Using a Complex Object as the Value of a Dictionary
-            //#########################################
-            //Please, avoid changing the given source code for the exercise!So only add code, don't modify unless it is instructed to do so!
-            //#########################################
-            //Create a simple C# program that declares a dictionary with string keys and values of type List<int>, initializes it with one key-value pair, and prints the values of the list for the given key to the console.
+            //Program program = new Program();      // for non-static PrintStudents Method        
+            //program.PrintStudents();            
 
-            //Alert!
-            //The result of execution for the default string should be:
-            //"1 2 3"
+            //PrintStudents();                        // for static PrintStudents Method        
 
-            Dictionary<string, List<int>> dict = new Dictionary<string, List<int>>();
 
-            dict.Add("Primer", new List<int> {1, 2, 3});
+            //Console.ReadKey();
 
-            foreach (var item in dict["Primer"])            
-                Console.Write($"{item} ");
-                        
+            ////////////////////////////
+            // Code Challenge Advanced//
+            ////////////////////////////
+
+            // Alternative Solution
+
+            // Students objects instances
+            Student stud1 = new Student(1, "John", 85);
+            Student stud2 = new Student(2, "Alice", 90);
+            Student stud3 = new Student(3, "Bob", 78);
+
+            var students = new Dictionary<string, Student>
+            {
+                [stud1.Name] = stud1,
+                [stud2.Name] = stud2,
+                [stud3.Name] = stud3
+            };
+
+            //Program program = new Program();          // for non-static PrintStudents Method        
+            //program.PrintStudents(students);
+
+            PrintStudents(students);                  // for static PrintStudents Method
+
+
+            Console.ReadKey();
+
+
+            ///////////////////////////////////////////////////
+            //// Dictionaries alternative initialisation ways//
+            ///////////////////////////////////////////////////
+
+            //var codes = new Dictionary<string, string>
+            //{
+            ////  [Key]  = Value
+            //    ["NY"] = "New York",
+            //    ["CA"] = "California",
+            //    ["TX"] = "Texas",
+
+            //};            
+
+            //if (codes.TryGetValue(("NY"), out string state))            
+            //    Console.WriteLine(state);
+
+            //foreach(var item in codes)            
+            //    Console.WriteLine($"The state code is {item.Key} and the state name is {item.Value}");
+
+            //Console.ReadKey();
+
+            //////////////////////
+            //// Code Challenge //
+            //////////////////////
+
+            ////Using a Complex Object as the Value of a Dictionary
+            ////#########################################
+            ////Please, avoid changing the given source code for the exercise!So only add code, don't modify unless it is instructed to do so!
+            ////#########################################
+            ////Create a simple C# program that declares a dictionary with string keys and values of type List<int>, initializes it with one key-value pair, and prints the values of the list for the given key to the console.
+
+            ////Alert!
+            ////The result of execution for the default string should be:
+            ////"1 2 3"
+
+            //Dictionary<string, List<int>> dict = new Dictionary<string, List<int>>();
+
+            //dict.Add("Primer", new List<int> {1, 2, 3});
+
+            //foreach (var item in dict["Primer"])            
+            //    Console.Write($"{item} ");
+
+            //Console.ReadKey();
+
+
             //////////////////////////////////////
             //// Dictionary<int, Employee> VERSION//
             //////////////////////////////////////
@@ -59,7 +163,8 @@ namespace Dictionaries
             //                    $"earns {item.Value.Salary} $");
             //}
 
-            Console.ReadKey();
+            //Console.ReadKey();
+
 
             ////////////////////////////////////
             // Dictionary<int, string> VERSION//
