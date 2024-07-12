@@ -44,12 +44,12 @@ namespace TryCatchExceptions
             {
                 Console.WriteLine("YOU USED A NUMBER TOO HIGH! " + ex.Message);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.ToString());
-                // This next line is only executed during "Debugging"
-                Debug.WriteLine(ex.ToString());
-            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.ToString());
+            //    // This next line is only executed during "Debugging"
+            //    Debug.WriteLine(ex.ToString());
+            //}
             finally
             {
                 // Code to cleanup or finalize
