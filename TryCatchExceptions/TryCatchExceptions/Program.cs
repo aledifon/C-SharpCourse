@@ -19,49 +19,61 @@ namespace TryCatchExceptions
             //    Console.Write("Finally executed.\n");
             //}
 
-            //int result = 0;
+            int result = 0;
 
-            //Debug.WriteLine("Main method is running");
+            Debug.WriteLine("Main method is running");
 
-            //try
-            //{
-            //    Console.WriteLine("Please enter a number");
-            //    int num2 = int.Parse(Console.ReadLine());
-            //    int num1 = 2;
+            try
+            {
+                Console.WriteLine("Please enter a number");
+                int num2 = int.Parse(Console.ReadLine());
+                int num1 = 2;
 
-            //    result = num1 / num2;
-            //}
-            //catch (Exception ex) 
-            //{
-            //    Console.WriteLine("Error: " + ex.Message);
-            //    // This next line is only executed during "Debugging"
-            //    Debug.WriteLine(ex.ToString());
-            //}
-            //finally
-            //{
-            //    // Code to cleanup or finalize
-            //    // ideal for cleaning up resources,
-            //    // like closing file streams or database connections.
+                result = num1 / num2;
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("DON'T DIVIDE BY ZERO!! " + ex.Message);
+                result = 10;
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("DON'T USE TEXT, ONLY NUMBERS PLEASE!! " + ex.Message);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("YOU USED A NUMBER TOO HIGH! " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.ToString());
+                // This next line is only executed during "Debugging"
+                Debug.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                // Code to cleanup or finalize
+                // ideal for cleaning up resources,
+                // like closing file streams or database connections.
 
-            //    Console.WriteLine("This always executes");
-            //}
+                Console.WriteLine("This always executes");
+            }
 
-            //Console.WriteLine("Result: " + result);
-            //Console.ReadKey();            
-
-
-
-
-            Console.WriteLine("Please enter your age");
-
-            // Non-static GetUserAge method
-            //Program program = new Program();            
-            //program.GetUserAge(Console.ReadLine());
-
-            // Static GetUserAge method
-            GetUserAge(Console.ReadLine());
-
+            Console.WriteLine("Result: " + result);
             Console.ReadKey();
+
+
+
+            //Console.WriteLine("Please enter your age");
+
+            //// Non-static GetUserAge method
+            ////Program program = new Program();            
+            ////program.GetUserAge(Console.ReadLine());
+
+            //// Static GetUserAge method
+            //GetUserAge(Console.ReadLine());
+
+            //Console.ReadKey();
         }
 
         static int GetUserAge(string input)
