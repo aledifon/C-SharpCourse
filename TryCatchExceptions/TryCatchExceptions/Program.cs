@@ -4,20 +4,58 @@ using System.Runtime.CompilerServices;
 namespace TryCatchExceptions
 {
     internal class Program
-    {
-        static void Main(string[] args)
+    {                
+        static void HandleMultipleExceptions(int idx, string strNum)
         {
-            Console.WriteLine("App running before the try block");
+            // TODO
+            int[] numbers = { 1, 2, 3 };
             try
             {
-                LevelOne();
-            }            
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception caught in Main: " + ex.Message);
+                //int num = int.Parse(str);
+                //Console.WriteLine($"El numero introducido es {int.Parse(strNum)}");
+                int num1 = int.Parse(strNum);
+                int num2 = numbers[idx];
+                Console.WriteLine("2");
             }
-            Console.WriteLine("App is still running!");
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine("Index out of range.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid format.");
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            /////////////////////////////
+            ///CODE Challenge Advanced //
+            /////////////////////////////
+
+            Console.WriteLine("Type the index to check: ");
+            int idxArray = int.Parse(Console.ReadLine());
+            Console.WriteLine("Type the string to parse: ");
+            string strToParse = Console.ReadLine();
+
+            HandleMultipleExceptions(idxArray, strToParse);                        
             Console.ReadKey();
+
+            //////////////////////////////////////
+            /// Exceptions working on the stack //
+            //////////////////////////////////////
+
+            //Console.WriteLine("App running before the try block");
+            //try
+            //{
+            //    LevelOne();
+            //}            
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Exception caught in Main: " + ex.Message);
+            //}
+            //Console.WriteLine("App is still running!");
+            //Console.ReadKey();
 
             ///////////////////
             ///CODE Challenge//
