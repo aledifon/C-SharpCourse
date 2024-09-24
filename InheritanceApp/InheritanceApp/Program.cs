@@ -14,8 +14,16 @@
             //Employee joe = new Employee("Joe", 36);
             //joe.DisplayPersonInfo();            
 
-            Employee joe = new Employee("Joe", 36, "Sales Rep", 12345);
-            joe.DisplayEmployeeInfo();
+            //Employee joe = new Employee("Joe", 36, "Sales Rep", 12345);
+            //joe.DisplayEmployeeInfo();
+
+            Manager mike = new Manager("Mike", 50, 123456, 10);
+            //mike.DisplayManagerInfo();
+            mike.BecomeOlder(5);
+
+            mike.DisplayPersonInfo();
+
+            //Console.WriteLine(mike.ToString());
 
             Console.ReadKey();
         }
@@ -38,10 +46,19 @@
         {
             Console.WriteLine($"Name: {Name}, Age: {Age}");
         }
-        
+
+        /// <summary>Makes our object older!</summary>
+        /// <param name="years">The parameter that indicates the amount of years the object should age.</param>
+        /// <returns>Returns the new age after aging/becoming older.</returns>                              
+        public int BecomeOlder(int years)
+        {
+            Age = Age + years;
+
+            return Age;
+        }
     }
 
-
+  
     public class Employee : Person
     {
         public string JobTitle { get; private set; }
@@ -63,6 +80,25 @@
         }
 
     }
+
+    public class Manager : Employee
+    {
+        public int TeamSize { get; private set; }
+
+        public Manager(string name, int age, int employeeID, int teamSize) 
+            : base(name, age, "Manager", employeeID)
+        {
+            TeamSize = teamSize;
+            Console.WriteLine("Manager (2nd derived class) constructor called");
+        }
+        public void DisplayManagerInfo()
+        {
+            DisplayEmployeeInfo(); // Call method from base class
+            Console.WriteLine($"Name: {Name}, Age: {Age}, Job Title: Manager, " +
+                            $"Employe ID: {EmployeeID}, Team Size: {TeamSize}");
+        }
+    }
+
 
     // Base Class (Parent Class or Superclass): The class whose members are inherited
     class Animal
