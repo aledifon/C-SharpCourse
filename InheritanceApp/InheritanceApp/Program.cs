@@ -11,8 +11,11 @@
             //Cat mycat = new Cat();
             //mycat.MakeSound();
 
-            Employee joe = new Employee("Joe", 36);
-            joe.DisplayPersonInfo();
+            //Employee joe = new Employee("Joe", 36);
+            //joe.DisplayPersonInfo();            
+
+            Employee joe = new Employee("Joe", 36, "Sales Rep", 12345);
+            joe.DisplayEmployeeInfo();
 
             Console.ReadKey();
         }
@@ -41,10 +44,24 @@
 
     public class Employee : Person
     {
-        public Employee(string name, int age) : base(name, age)
-        {
-            Console.WriteLine("Employee (derived class) constructor called");
+        public string JobTitle { get; private set; }
+        public int EmployeeID { get; private set; }
+
+        // Derived class constructor
+        public Employee(string name, int age, string jobTitle, int employeeID) 
+            : base(name, age) // Calling the base class constructor
+        {                
+            JobTitle = jobTitle;
+            EmployeeID = employeeID;
+            Console.WriteLine("Employee (derived class) constructor called");           
         }
+
+        public void DisplayEmployeeInfo()
+        {
+            DisplayPersonInfo(); // Call method from base class
+            Console.WriteLine($"Name: {Name}, Age: {Age}, Job Title: {JobTitle}, Employe ID: {EmployeeID}");
+        }
+
     }
 
     // Base Class (Parent Class or Superclass): The class whose members are inherited
