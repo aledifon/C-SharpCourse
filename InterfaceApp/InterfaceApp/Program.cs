@@ -118,6 +118,7 @@
             //Animal myDog = new Dog();                
             //myDog.MakeSound();
 
+            // Polymorphism
             IPaymentProcessor creditCardProcessor = new CreditCardProcessor();
             PaymentService paymentService = new PaymentService(creditCardProcessor);
             paymentService.ProcessOrderPayment(100.0m);
