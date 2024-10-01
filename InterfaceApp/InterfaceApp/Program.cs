@@ -62,76 +62,58 @@
 
     // More example implementing interfaces
 
-    public interface IPaymentProcessor
-    {
-        void ProcessPayment(decimal amount);
-    }
+    //public interface IPaymentProcessor
+    //{
+    //    void ProcessPayment(decimal amount);
+    //}
 
-    public class CreditCardProcessor : IPaymentProcessor
-    {
-        public void ProcessPayment(decimal amount)
-        {
-            Console.WriteLine($"Processing credit card payment of the {amount}");
-            //Implement credit card payment logic.
-        }
-    }
+    //public class CreditCardProcessor : IPaymentProcessor
+    //{
+    //    public void ProcessPayment(decimal amount)
+    //    {
+    //        Console.WriteLine($"Processing credit card payment of the {amount}");
+    //        //Implement credit card payment logic.
+    //    }
+    //}
 
-    public class PaypalProcessor : IPaymentProcessor
-    {
-        public void ProcessPayment(decimal amount)
-        {
-            Console.WriteLine($"Processing paypal payment of the {amount}");
-            //Implement paypal card payment logic.
-        }
-    }
+    //public class PaypalProcessor : IPaymentProcessor
+    //{
+    //    public void ProcessPayment(decimal amount)
+    //    {
+    //        Console.WriteLine($"Processing paypal payment of the {amount}");
+    //        //Implement paypal card payment logic.
+    //    }
+    //}
 
-    public class PaymentService
-    {
-        private readonly IPaymentProcessor _processor;
+    //public class PaymentService
+    //{
+    //    private readonly IPaymentProcessor _processor;
 
-        public PaymentService(IPaymentProcessor processor) 
-        {
-            _processor = processor;
-        }
+    //    public PaymentService(IPaymentProcessor processor) 
+    //    {
+    //        _processor = processor;
+    //    }
 
-        public void ProcessOrderPayment(decimal amount)
-        {
-            _processor.ProcessPayment(amount);
-        }
-    }
+    //    public void ProcessOrderPayment(decimal amount)
+    //    {
+    //        _processor.ProcessPayment(amount);
+    //    }
+    //}
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            // Part 1 of polymorphism
-            //Dog dog = new Dog();
-            //Cat cat = new Cat();
+            // The @ sign in C# is used to denote a verbatim string literal
+            string directoryPath = @"C:\Logs";
+            string filePath = Path.Combine(directoryPath, "log.txt");
+            string message = "This is a log entry";
 
-            //dog.MakeSound();
-            ////dog.Eat("Treat");
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
 
-            //cat.MakeSound();
-            ////cat.Eat("Whispas");
-
-            // Part 2 of polymorphism
-            //Animal myDog = new Dog();                
-            //myDog.MakeSound();
-
-            // Polymorphism
-            IPaymentProcessor creditCardProcessor = new CreditCardProcessor();
-            PaymentService paymentService = new PaymentService(creditCardProcessor);
-            paymentService.ProcessOrderPayment(100.0m);
-
-            IPaymentProcessor paypalProcessor = new PaypalProcessor();
-            paymentService = new PaymentService(paypalProcessor);
-            paymentService.ProcessOrderPayment(200.0m);
-
+            File.AppendAllText(filePath, message + "\n");
             Console.ReadKey();
         }
     }
-
-
-
-
 }
