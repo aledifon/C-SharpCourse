@@ -24,26 +24,15 @@
 
     public class Builder
     {
-        private Hammer _hammer;
-        private Saw _saw;
+        public Hammer Hammer { get; set; }
+        public Saw Saw { get; set; }        
 
-        //public Builder(Tools tools)
-        //{
-        //    _hammer = tools.hammer; // Builder is responsible for creating its dependencies
-        //    _saw = tools.saw;
-        //}
-
-        // Constructor Dependency Injection (DI)
-        public Builder(Hammer hammer, Saw saw)
-        {
-            _hammer = hammer; // Builder is responsible for creating its dependencies
-            _saw = saw;
-        }
+        // Setter Dependency Injection (DI)       
 
         public void BuildHouse()
         {
-            _hammer.Use();
-            _saw.Use();
+            Hammer.Use();
+            Saw.Use();
             Console.WriteLine("House built");
         }
     }    
@@ -52,9 +41,11 @@
     {
         static void Main(string[] args)
         {
-            Hammer hammer = new Hammer();
+            Hammer hammer = new Hammer();   // Create the dependencies outside     
             Saw saw = new Saw();    
-            Builder builder = new Builder(hammer, saw);
+            Builder builder = new Builder();
+            builder.Hammer = hammer;        // Inject dependencies via Setters
+            builder.Saw = saw;              // Inject dependencies via Setters
 
             builder.BuildHouse();   
 
