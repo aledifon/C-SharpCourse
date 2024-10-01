@@ -1,5 +1,11 @@
 ﻿namespace DependencyInjectionApp
 {    
+    public interface IToolUser
+    {
+        void SetHammer(Hammer hammer);
+        void SetSaw(Saw saw);
+    }
+
     public class Hammer
     {
         public void Use()
@@ -22,19 +28,30 @@
     //    public Saw saw;
     //}
 
-    public class Builder
+    public class Builder : IToolUser
     {
-        public Hammer Hammer { get; set; }
-        public Saw Saw { get; set; }        
+        // Interface Dependency Injection (DI)
 
-        // Setter Dependency Injection (DI)       
+        private Hammer _hammer;
+        private Saw _saw;        
+
+        public void SetHammer(Hammer hammer)
+        {
+           _hammer = hammer;
+        }
+
+        public void SetSaw(Saw saw)
+        {
+            _saw = saw;
+        }
 
         public void BuildHouse()
         {
-            Hammer.Use();
-            Saw.Use();
+            _hammer.Use();
+            _saw.Use();
             Console.WriteLine("House built");
         }
+
     }    
 
     internal class Program
@@ -44,8 +61,8 @@
             Hammer hammer = new Hammer();   // Create the dependencies outside     
             Saw saw = new Saw();    
             Builder builder = new Builder();
-            builder.Hammer = hammer;        // Inject dependencies via Setters
-            builder.Saw = saw;              // Inject dependencies via Setters
+            builder.SetHammer(hammer);      // Inject dependencies through interface methods
+            builder.SetSaw(saw);
 
             builder.BuildHouse();   
 
