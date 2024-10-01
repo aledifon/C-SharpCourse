@@ -1,70 +1,34 @@
 ﻿namespace DependencyInjectionApp
-{    
-    public interface IToolUser
+{
+    public interface IPrintable 
     {
-        void SetHammer(Hammer hammer);
-        void SetSaw(Saw saw);
+        void Print();
     }
 
-    public class Hammer
+    public interface IScannable
     {
-        public void Use()
-        {
-            Console.WriteLine("Hammering Nails!");
-        }
+        void Scan();
     }
 
-    public class Saw
+    public class MultiFunctionPrinter : IPrintable, IScannable
     {
-        public void Use()
+        public void Print()
         {
-            Console.WriteLine("Sawing wood!");
+            Console.WriteLine("Printing document");
+        }
+
+        public void Scan()
+        {
+            Console.WriteLine("Scanning document");
         }
     }
-
-    //public class Tools
-    //{
-    //    public Hammer hammer;
-    //    public Saw saw;
-    //}
-
-    public class Builder : IToolUser
-    {
-        // Interface Dependency Injection (DI)
-
-        private Hammer _hammer;
-        private Saw _saw;        
-
-        public void SetHammer(Hammer hammer)
-        {
-           _hammer = hammer;
-        }
-
-        public void SetSaw(Saw saw)
-        {
-            _saw = saw;
-        }
-
-        public void BuildHouse()
-        {
-            _hammer.Use();
-            _saw.Use();
-            Console.WriteLine("House built");
-        }
-
-    }    
-
     internal class Program
     {
         static void Main(string[] args)
         {
-            Hammer hammer = new Hammer();   // Create the dependencies outside     
-            Saw saw = new Saw();    
-            Builder builder = new Builder();
-            builder.SetHammer(hammer);      // Inject dependencies through interface methods
-            builder.SetSaw(saw);
-
-            builder.BuildHouse();   
+            MultiFunctionPrinter printer = new MultiFunctionPrinter();
+            printer.Print();
+            printer.Scan();
 
             Console.ReadKey();
         }
