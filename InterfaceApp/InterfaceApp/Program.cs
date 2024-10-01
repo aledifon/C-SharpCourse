@@ -1,118 +1,75 @@
 ﻿namespace InterfaceApp
 {
-    // Polymorphism through Interfaces Example   
-
-    //public interface IAnimal
-    //{
-    //    void MakeSound();
-    //    void Eat(string food);
-
-    //}
-
-    //public class Dog : IAnimal
-    //{
-    //    public void Eat(string food)
-    //    {
-    //        Console.WriteLine("Dog eats " + food);
-    //    }
-
-    //    public void MakeSound()
-    //    {
-    //        Console.WriteLine("Bark");
-    //    }
-    //}
-
-    //public class Cat : IAnimal
-    //{
-    //    public void Eat(string food)
-    //    {
-    //        Console.WriteLine("Cat eats " + food);
-    //    }
-
-    //    public void MakeSound()
-    //    {
-    //        Console.WriteLine("Meoww");
-    //    }
-    //}
-
-    // Polymorphism through Inheritance Example
-
-    //public class Animal
-    //{
-    //    public virtual void MakeSound()
-    //    {
-    //        Console.WriteLine("Some generic animal sound");
-    //    }
-    //}
-
-    //public class Dog : Animal 
-    //{
-    //    public override void MakeSound()
-    //    {
-    //        Console.WriteLine("Bark");
-    //    }
-    //}
-    //public class Cat : Animal
-    //{
-    //    public override void MakeSound()
-    //    {
-    //        Console.WriteLine("Meow");
-    //    }
-    //}
-
-    // More example implementing interfaces
-
-    //public interface IPaymentProcessor
-    //{
-    //    void ProcessPayment(decimal amount);
-    //}
-
-    //public class CreditCardProcessor : IPaymentProcessor
-    //{
-    //    public void ProcessPayment(decimal amount)
-    //    {
-    //        Console.WriteLine($"Processing credit card payment of the {amount}");
-    //        //Implement credit card payment logic.
-    //    }
-    //}
-
-    //public class PaypalProcessor : IPaymentProcessor
-    //{
-    //    public void ProcessPayment(decimal amount)
-    //    {
-    //        Console.WriteLine($"Processing paypal payment of the {amount}");
-    //        //Implement paypal card payment logic.
-    //    }
-    //}
-
-    //public class PaymentService
-    //{
-    //    private readonly IPaymentProcessor _processor;
-
-    //    public PaymentService(IPaymentProcessor processor) 
-    //    {
-    //        _processor = processor;
-    //    }
-
-    //    public void ProcessOrderPayment(decimal amount)
-    //    {
-    //        _processor.ProcessPayment(amount);
-    //    }
-    //}
-
-    internal class Program
+    public interface ILogger
     {
-        static void Main(string[] args)
+        void Log(string message);
+    }
+
+    public class FileLogger: ILogger 
+    {
+        public void Log(string message) 
         {
             // The @ sign in C# is used to denote a verbatim string literal
             string directoryPath = @"C:\Logs";
-            string filePath = Path.Combine(directoryPath, "log.txt");
-            string message = "This is a log entry";
+            string filePath = Path.Combine(directoryPath, "log.txt");            
 
             if (!Directory.Exists(directoryPath))
                 Directory.CreateDirectory(directoryPath);
 
             File.AppendAllText(filePath, message + "\n");
+        }
+    }
+
+    public class  DatabaseLogger: ILogger
+    {
+        public void Log(string message)
+        {
+            // Implement the logic to log a message to a database
+            Console.WriteLine($"Logging to database. {message}");
+        }
+    }
+
+    public class Application 
+    {
+        // readonly private Field 
+        private readonly ILogger _logger;
+
+        // Class constructor
+        public Application(ILogger logger)
+        {
+            _logger = logger;
+        }
+
+        public void DoWork() 
+        { 
+            _logger.Log("Work started");
+            // DO ALL THE WORK!
+            _logger.Log("WORK DONE!");
+        }
+    }
+
+    /*
+     Decoupling: The application class depends on the 
+    ILogger interface rather than specific implementations 
+    like FileLogger or DatabaseLogger.
+    This means you can easily switch the logging mechanism
+    without changing the Application class.
+     */
+
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            ILogger fileLogger = new FileLogger();
+            Application app = new Application(fileLogger);
+            app.DoWork();
+
+            ILogger dbLogger = new DatabaseLogger();
+            Application dbApp = new Application(dbLogger);
+            dbApp.DoWork();
+
             Console.ReadKey();
         }
     }
