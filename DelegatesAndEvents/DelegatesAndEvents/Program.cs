@@ -1,36 +1,33 @@
 ﻿namespace DelegatesAndEvents
-{
-    // 1. Declaration:
-    // Is possible to declare delegates outside of the class, 
-    // indeed is preferable
-    public delegate void Notify(string message);
+{    
+    public delegate void LogHandler(string message);
+
+    public class Logger
+    {
+        public void LogToConsole(string message)
+        {
+            Console.WriteLine("Console Log: " + message);
+        }
+
+        public void LogToFile(string message)
+        {
+            Console.WriteLine("File log: " + message);
+        }
+    }
 
     internal class Program
-    {
-        //// 1. Declaration:
-        //public delegate void Notify(string message);
-
+    {        
         static void Main(string[] args)
-        {
-            // Delegates define a method signature,
-            // and any method assigned to a delegate must match this signature.
+        {            
 
-            // 1. Declaration:
+            Logger logger = new Logger();
+            LogHandler logHandler = logger.LogToConsole;
+            logHandler("Logging to console");
 
-            // 2. Instantiation:
-            Notify notifyDelegate = ShowMessage;
-            //Notify notifyDelegate = new Notify(ShowMessage);
-
-            // 3. Invocation:
-            notifyDelegate("Hello Delegates!");
-
+            logHandler = logger.LogToFile;
+            logHandler("Log some stuff");
 
             Console.ReadKey();
-        }
-
-        static void ShowMessage(string message2)
-        {
-            Console.WriteLine(message2);
-        }
+        }        
     }
 }
