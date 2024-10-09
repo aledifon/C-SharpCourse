@@ -1,75 +1,84 @@
 ﻿namespace DelegatesAndEvents
 {    
-    public delegate int Comparison<T>(T x, T y);
+    public delegate void LogHandler (string message);
 
-    public class Person
+    public class Logger
     {        
-        public int Age { get; set; }
-        public string Name { get; set; }
-    }
-
-    public class PersonSorter
-    {
-        public void Sort(Person[] people, Comparison<Person> comparison)
+        public void LogToConsole(string message)
         {
-            for (int i = 0; i < people.Length - 1; i++)
-            {
-                // Compare people[i] and people[j] using the provided comparison delegate
-                for (int j = i + 1; j < people.Length; j++)
-                {
-                    if (comparison(people[i], people[j]) > 0)
-                    {
-                        // Swap people[i] and people[j] if they are in the wrong order
-                        Person temp = people[i];
-                        people[i] = people[j];  
-                        people[j] = temp;
-
-                        //people[0] = Alice;
-                        //people[1] = Bob;
-                        //people[2] = Charlie;
-                    }
-                }
-            }
+            Console.WriteLine("Console log: " + message);
         }
-    }
-
+        public void LogToFile(string message)
+        {
+            Console.WriteLine("File log: " + message);
+        }
+    }    
     internal class Program
     {
         static void Main(string[] args)
         {
-            Person[] people =
+            Logger logger = new Logger();
+
+            // Creating a multicast delegate
+            LogHandler logHandler = logger.LogToConsole;
+            logHandler += logger.LogToFile;
+
+            // invoking the multicast delegate
+            //logHandler("Log this info");
+
+            foreach (LogHandler handler in logHandler.GetInvocationList())
             {
-                new Person { Name = "Alice", Age = 30},
-                new Person { Name = "Bob", Age = 25},
-                new Person { Name = "Denis", Age = 36},
-                new Person { Name = "Charlie", Age = 35},
-            };           
+                try
+                {
+                    handler("Event occurred with error handling");
+                }catch (Exception ex)
+                {
+                    Console.WriteLine("Exception caught: " + ex.Message);
+                }
+            }
+
+            // Removing a method from the multicast delegate
+            if (IsMethodInDelegate(logHandler, logger.LogToFile))
+            {
+                logHandler -= logger.LogToFile;
+                Console.WriteLine("LogToFile method removed");
+            }
+            else
+            {
+                Console.WriteLine("LogToFile method not found");
+            }
             
-            PersonSorter personSorter = new PersonSorter();
-            personSorter.Sort(people, CompareByAge);
-
-            foreach (Person person in people)
+            if (logHandler != null)
             {
-                Console.WriteLine($"Name: {person.Name}. Age: {person.Age}");
+                InvokeSafely(logHandler, "Afer removing LogToFile");                 
             }
-
-            personSorter.Sort(people, CompareByName);
-
-            foreach (Person person in people)
-            {
-                Console.WriteLine($"Name: {person.Name}. Age: {person.Age}");
-            }
+            //logHandler("Afer removing LogToFile");
 
             Console.ReadKey();
-        } 
+        }
+        static void InvokeSafely(LogHandler logHandler, string message)
+        {
+            LogHandler tempLogHandler = logHandler;
+            if (tempLogHandler != null)
+            {
+                tempLogHandler(message);
+            }            
+        }
 
-        static int CompareByAge(Person x, Person y)
+        static bool IsMethodInDelegate(LogHandler logHandler, LogHandler method)
         {
-            return x.Age.CompareTo(y.Age);
+            if (logHandler == null)
+            {
+                return false;
+            }
+            foreach(var d in logHandler.GetInvocationList())
+            {
+                if (d == (Delegate)method)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
-        static int CompareByName(Person x, Person y)
-        {
-            return x.Name.CompareTo(y.Name);
-        }
-    }
+    }   
 }
