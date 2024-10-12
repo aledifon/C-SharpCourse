@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfDemo
+namespace TodoApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,14 +19,6 @@ namespace WpfDemo
         public MainWindow()
         {
             InitializeComponent();
-
-                                
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Hello World");
-
         }
     }
 }
