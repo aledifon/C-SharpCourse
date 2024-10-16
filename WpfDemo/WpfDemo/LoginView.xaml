@@ -23,5 +23,7 @@
 
         <Label Grid.Column="1" Grid.Row="1" Content="Please Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
         <Button Click="LoginButton_Clicked" Grid.Column="1" Grid.Row="3" Content="Login"/>
+
+        <ContentControl Grid.Column="1" Grid.Row="4" x:Name="LoginViewContent"/>
     </Grid>
 </UserControl>
